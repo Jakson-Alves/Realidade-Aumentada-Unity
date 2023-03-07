@@ -130,5 +130,5 @@ Também é possível adicionar ao cubo gravidade:
 - 5 - Ajuste a altura do seu cubo no plano, e inicie o Unity;
 - 6 - Ative a gravidade e veja o cubo caindo:
 
-![image](./imagem/Gravidade.gif)
+![image](https://github.com/Jakson-Alves/Realidade-Aumentada-Unity/blob/main/imagem/Gravidade.gif)
 >_Usando gravidade com o cubo 3D._
