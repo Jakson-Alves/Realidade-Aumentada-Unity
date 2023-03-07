@@ -39,6 +39,96 @@ Depois do seu modelo 3D criado no Unity, é necessário vinculá-lo com o Vufori
 - 3 - Imprima seu Target, e demonstre na webcam do seu desktop após iniciar o projeto do Unity;
 - 4 - Quando a impressao real (impressão) é detectada pelo Vuforia (pela câmera) o objeto 3D é exibido em realidade aumentada, sobrepondo a impressão.
 
-![image](\\imagem\Cubo + Target.png)
+![image](https://raw.githubusercontent.com/Jakson-Alves/Realidade-Aumentada-Unity/main/imagem/Cubo%20%2B%20Target.png)
 
+## 5. Implementação do script de rastreamento:
 
+Para rastrear o objeto real e atualizar a posição do modelo 3D no mundo virtual do Unity, é necessário implementar um script de rastreamento no Unity. 
+
+- 1 - Selecione o cubo na cena e, em seguida, abra o painel "Inspector" no lado direito da tela;
+- 2 - No painel "Inspector", clique no botão "Add Component";
+- 3 - Na lista de componentes, selecione "New Script";
+- 4 - Com o novo script selecionado no painel "Inspector", clique no botão "Edit Script" para abrir o editor de scripts do Unity;
+- 5 - Escreva o código para rotacionar o cubo:
+```sh
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class rotate : MonoBehaviour
+{
+    public Vector3 rotateAmount;
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        transform.Rotate(rotateAmount * Time.deltaTime);
+    }
+}
+```
+>_Script para rotacionar o cubo 3D._
+- 6 - Adicione esse Script ao cubo movendo até ele:
+- 7 - No novo componet criado, adicione uma rotação em "Rotate Amount" como por exemplo:
+```sh
+X = 50, Y = 50, Z = 50.
+```
+![image](https://raw.githubusercontent.com/Rafael-Barbosa/Realidade-Aumentada_Unity/main/Img/Detalhes.png)
+>_Valores para rotacionar o cubo 3D._
+
+## 6. Configuração da interface do usuário:
+
+O script pode ser personalizado para controlar a interação do usuário com o modelo 3D de forma intuitiva e agradável, como permitir que o usuário mova e redimensione o objeto.
+
+- 1 - Selecione o cubo na cena e, em seguida, abra o painel "Inspector" no lado direito da tela;
+- 2 - No painel "Inspector", clique no botão "Add Component";
+- 3 - Na lista de componentes, selecione "New Script";
+- 4 - Com o novo script selecionado no painel "Inspector", clique no botão "Edit Script" para abrir o editor de scripts do Unity;
+- 5 - Escreva o código para rotacionar o cubo:
+```sh
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Movimento : MonoBehaviour
+{
+    // Start is called before the first frame update
+    Vector3 Vec;
+    void Start()
+    {
+
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        Vec = transform.localPosition;
+        Vec.y += Input.GetAxis("Jump") * Time.deltaTime * 5;
+        Vec.x += Input.GetAxis("Horizontal") * Time.deltaTime * 5;
+        Vec.z += Input.GetAxis("Vertical") * Time.deltaTime * 5;
+        transform.localPosition = Vec;
+    }
+}
+```
+>_Script para adicionar interação do usuário com o cubo 3D._
+
+- 6 - Adicione esse Script ao cubo movendo até ele:
+- 7 - Por fim, o usuário conseguirá mover o cubo utilizando as teclas de movimento do teclado, e fazer com que ele "pule" usando a tecla de "Espaço";
+
+![image](./imagem/Movimento.gif)
+>_Usuário interagindo com o cubo 3D._
+
+## 7. Adicionando gravidade:
+
+Também é possível adicionar ao cubo gravidade:
+
+- 1 - Selecione o cubo na cena e, em seguida, abra o painel "Inspector" no lado direito da tela;
+- 2 - No painel "Inspector", clique no botão "Add Component";
+- 3 - Na lista de componentes, selecione "Physics";
+- 4 - Seleciona a opção "Rigidbody":
+- 5 - Ajuste a altura do seu cubo no plano, e inicie o Unity;
+- 6 - Ative a gravidade e veja o cubo caindo:
+
+![image](./imagem/Gravidade.gif)
+>_Usando gravidade com o cubo 3D._
